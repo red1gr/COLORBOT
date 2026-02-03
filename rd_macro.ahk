@@ -15,19 +15,19 @@ SoundBeep, 300, 200
 SoundBeep, 400, 200
  
 ;HOTKEYS
-key_stay_on	:= 	"F1"		; self explanatory		
-key_hold_mode	:= 	"F2"		; scan will only scan if "key_hold" is pressed
-key_fastclick 	:= 	"F3"		; self explanatory (on/off beep sound only)
-key_off		:= 	"F4"		; self explanatory	
-key_gui_hide	:=	"Home"		; hides gui (graphical user interface)		
-key_exit	:= 	"End"		; self explanatory		
-key_hold	:=	"XButton2" 	; key that you hold to scan (example "T") 	
+key_stay_on	:= 	"F1"		
+key_hold_mode	:= 	"F2"		
+key_fastclick 	:= 	"F3"		
+key_off		:= 	"F4"		
+key_gui_hide	:=	"Home"		
+key_exit	:= 	"End"	
+key_hold	:=	"XButton2" 	
  
 ;SETTINGS
-pixel_box	:=	6		; Keep between min 3 and max 8		
-pixel_sens	:=	60	; higher/lower = more/less color sensitive 		
-pixel_color	:=	0xFEFE40	; yellow="0xFEFE40", purple="0xA145A3"
-tap_time	:=	0		; Delay in ms between shots when triggered
+pixel_box	:=	6	
+pixel_sens	:=	60	 		
+pixel_color	:=	0xFEFE40	
+tap_time	:=	0		
  
 ;DO NOT TOUCH?
 Gui,2:Font,Cdefault,Fixedsys
@@ -135,17 +135,10 @@ PixelSearch() {
     {
         If !GetKeyState("LButton")
         {
-            ; Send mouse click using PostMessage
-            ; WM_LBUTTONDOWN = 0x201, WM_LBUTTONUP = 0x202
             PostMessage, 0x201, 0x0001, (FoundY << 16) | FoundX, , A  ; Left button down
-            ; Sleep, 1
             PostMessage, 0x202, 0x0000, (FoundY << 16) | FoundX, , A  ; Left button up
-            
-            ; Alternative: Use PostMessage to the active window's control
-            ; ControlClick, , A, , left, 1, NA
-            
-            ; sleep %tap_time%
         }
     }
     return
+
 }
