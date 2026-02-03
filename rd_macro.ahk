@@ -29,7 +29,7 @@ pixel_sens	:=	60
 pixel_color	:=	0xFEFE40	
 tap_time	:=	0		
  
-;DO NOT TOUCH?
+
 Gui,2:Font,Cdefault,Fixedsys
 Gui,2:Color,Black
 Gui,2:Color, EEAA99
@@ -135,10 +135,11 @@ PixelSearch() {
     {
         If !GetKeyState("LButton")
         {
-            PostMessage, 0x201, 0x0001, (FoundY << 16) | FoundX, , A  ; Left button down
-            PostMessage, 0x202, 0x0000, (FoundY << 16) | FoundX, , A  ; Left button up
+            PostMessage, 0x201, 0x0001, (FoundY << 16) | FoundX, , A  
+            PostMessage, 0x202, 0x0000, (FoundY << 16) | FoundX, , A  
         }
     }
     return
 
 }
+
